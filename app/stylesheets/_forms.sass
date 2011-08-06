@@ -1,0 +1,103 @@
+.home_item,
+.live_item
+  width: 420px
+  margin: 250px auto
+  
+  .form-fields
+    width: 35em
+    li
+      margin-bottom: 1.5em
+    p
+      margin: 1em 0
+  
+  label
+    display: block
+    margin: 0 1em 0.5em 0
+    float: left
+
+  // Common fields and buttons
+  input[type=text], input[type=password], input[type=email], textarea, input[type=submit]
+    border: 1px solid $border-color
+    padding: 0 0.5em
+    +border-radius(4px, 4px)
+    +box-shadow($shadow-color, 1px, 1px, 3px)
+    background-color: $light-background-color
+    font-size: inherit
+    font-family: inherit
+    +box-sizing-border
+    &:focus
+      border-color: black
+      
+  // Text input fields
+  input[type=text], input[type=password], input[type=email], textarea
+    width: 100%
+
+  // One-line form fields
+  input[type=text], input[type=password], input[type=email], input[type=submit]
+    height: 2em
+
+  // Multi-line input field
+  textarea
+    height: 17em
+    padding: 0.5em
+    line-height: 1.3
+
+  // Important one-line input field
+  input.important
+    font-size: 1.5em
+
+  // Side-by-side radio buttons
+  ul.compact-radio-buttons
+    +clearfix
+    margin: 1em 0
+    li
+      float: left
+      margin: 0 1em 0 0
+
+  // Form errors for a specific field
+  .form-errors
+    margin: 1em 0
+    color: #C00
+    li
+      margin: 0
+
+
+  .form-fields h4
+    margin:
+      bottom: 10px
+
+  // Submit/Cancel line
+  .form-fields li.submit
+    +clearfix
+    input
+      float: left
+    .cancel
+      float: right
+
+  // Submit button
+  input[type=submit]
+    height: 2em
+    padding: 0 1em
+    border: 1px solid $border-color
+    cursor: pointer
+    +linear-gradient(color-stops(white, #ddd))
+
+  // Transparent button which looks like a hyperlink
+
+  button.transparent
+    display: inline
+    appearance: none
+    -webkit-appearance: none
+    -moz-appearance: none
+    border: 0 none
+    padding: 0
+    height: auto
+    background-color: transparent
+    background-image: none
+    font: inherit
+    line-height: 1.5em
+    color: #44f
+    cursor: pointer
+    //vertical-align: top
+    //+box-shadow(none)
+

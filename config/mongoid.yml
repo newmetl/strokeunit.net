@@ -1,0 +1,20 @@
+<% appname = "strokeunit_rails" %>
+
+defaults: &defaults
+  host: localhost
+
+development:
+  <<: *defaults
+  database: <%= appname %>_development
+
+test:
+  <<: *defaults
+  database: <%= appname %>_test
+
+stage:
+  <<: *defaults
+  database: <%= appname %>_stage
+
+production:
+  <<: *defaults
+  database: <%= appname %>_production

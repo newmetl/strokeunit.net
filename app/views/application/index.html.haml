@@ -1,0 +1,63 @@
+#lyrics_dialog1.jqmWindow
+#lyrics_dialog2.jqmWindow
+#lyrics_dialog3.jqmWindow
+#lyrics_dialog4.jqmWindow
+#lyrics_dialog5.jqmWindow
+#lyrics_dialog6.jqmWindow
+#lyrics_dialog7.jqmWindow
+#lyrics_dialog8.jqmWindow
+#lyrics_dialog9.jqmWindow
+#lyrics_dialog10.jqmWindow
+#lyrics_dialog11.jqmWindow
+#shirt_detail.jqmWindow
+#contact_success.jqmWindow
+
+.wrapper
+  = render :partial => 'shared/left_col'
+
+  .content
+    = render :partial => 'live_items/index', :locals => { :coming_up_live_items => LiveItem.coming_up_items, :past_live_items => LiveItem.past_items}
+    = render :partial => 'home_items/index', :locals => { :home_items => HomeItem.order_by([:created_at, :desc])}
+    = render :partial => 'shared/other_items'
+
+  = render :partial => 'shared/right_col'
+  
+  .impressum_link
+    %a( onclick="showImpressum(); return false;" )
+      Impressum
+
+#hidden
+  #disqus_thread
+  :javascript
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'strokeunit'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = '/';
+    var disqus_url = 'http://www.strokeunit.net';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+  %noscript 
+    Please enable JavaScript to view the
+    %a( href="http://disqus.com/?ref_noscript" ) comments powered by Disqus.
+  %a( href="http://disqus.com" class="dsq-brlink" )
+    blog comments powered by
+    %span( class="logo-disqus" ) Disqus
+
+:javascript
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'strokeunit'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());

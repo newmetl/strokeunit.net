@@ -1,0 +1,80 @@
+.controls{ :class => 'item' }
+  = link_to 'Neuer Eintrag', new_live_item_path
+
+.m_live{ :class => "item" }
+  .header{ :class => "clearfix" }
+    %h3 Anstehende Gigs:
+  %ul
+    %li.gig_item
+      %h4 01.07.2011: Bismarker Rocktage, Gelsenkirchen
+      .gig_pair
+        .gig_key
+          Datum:
+        .gig_value
+          01.07.11
+      %br
+      .gig_pair
+        .gig_key
+          Location:
+        .gig_value
+          Consolstraße 3, 45889 Gelsenkirchen
+      %br
+      .gig_pair
+        .gig_key
+          Begin:
+        .gig_value
+          18 h
+      %br
+      .gig_pair
+        .gig_key
+          Showtime:
+        .gig_value
+          20 h
+      %br
+      .gig_pair
+        .gig_key
+          Ticket:
+        .gig_value
+          Iss für Lulu! Kommen und abrocken!
+      %br
+      .gig_pair
+        .gig_key
+          Link:
+        .gig_value
+          %a{ :href => "http://www.ikm-ge.de/BR_Freitag.html", :target => "_blank", :class => "link" }
+            www.ikm-ge.de/
+
+.m_live{ :class => 'item' }
+  .header{ :class => 'clearfix' }
+    %h3 Versäumte Gigs:
+  %ul
+    %li.gig_item
+      %h4 11.03.2011: Luxor, Köln
+      .gig_pair
+        .gig_key
+          Datum:
+        .gig_value
+          21.04.11
+      %br
+      .gig_pair
+        .gig_key
+          Location:
+        .gig_value
+          Luxor, Köln
+    %li.gig_item
+      %h4 11.03.2011: Underground, Köln
+      .gig_pair
+        .gig_key
+          Datum:
+        .gig_value
+          11.03.11
+      %br
+      .gig_pair
+        .gig_key
+          Location:
+        .gig_value
+          Underground, Köln
+
+          .controls
+            = link_to 'Bearbeiten', edit_live_item_path(@live_item)
+            = link_to 'Löschen', live_item_path, :method => :delete, :confirm => "Wolle Eintrag lösche?"

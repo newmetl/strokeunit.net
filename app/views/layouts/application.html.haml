@@ -1,0 +1,38 @@
+!!!
+%html
+  %head
+    %meta{ 'http-equiv' => 'Content-Type',     :content => 'text/html;charset=utf-8' }
+    %meta{ 'http-equiv' => 'Content-Language', :content => 'de' }
+    %meta{ :name => "keywords", :content => "" }
+    %meta{ :name => "description", :content => "" }
+    %meta{ :name => 'viewport', :content => 'width = 1024, initial-scale = 1.0, user-scalable = yes' }
+    = yield :meta_tags
+    = csrf_meta_tag
+    
+    %title
+      = @page_title ? "#{strip_tags(@page_title)} - " : "Stroke Unit"
+
+    /[if lte IE 8]
+      = javascript_include_tag 'html5shiv'
+
+    = javascript_include_tag %w(jquery-1.5.1.min jqModal rails application jquery-ui-1.8.13.custom.min jquery.tools.min), :cache => true
+
+    = stylesheet_link_tag %w(application jqModal)
+    = yield :javascripts
+    
+  %body{ :style => "background:#030708 url(/images/su-banner-small.jpg) center 0 no-repeat; background-attachment: top;" }
+    %p.notice
+      = notice
+    %p.alert
+      = alert
+    - if current_user
+      .userInfo
+        %ul
+          %li
+            = link_to 'Abmelden', destroy_user_session_path, :method => :delete
+          %li
+            = " | "
+          %li
+            = "Du bist der #{current_user.name}"
+    
+    = yield

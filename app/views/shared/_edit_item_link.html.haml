@@ -1,0 +1,3 @@
+.controls
+  = link_to 'Bearbeiten', edit_stream_item_path(stream_item.id, :stream_type => stream_type)  
+  = link_to 'Löschen', stream_item, :method => :delete, :confirm => "Wolle Eintrag lösche?", :stream_type => stream_type

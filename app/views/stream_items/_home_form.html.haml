@@ -1,0 +1,15 @@
+= form_for home_item, :as => :home_item, :html => { :class => 'home_item' } do |f|
+
+  %ol.form-fields
+    %li
+      = f.label :title, 'Title:'
+      = f.text_field :title, :class => 'important'
+    %li
+      = f.label :text, 'Text:'
+      = f.text_field :text
+    %li.submit
+      = f.submit 'Speichern', :disable_with => 'Bitte warten…'
+      = link_to 'Abbrechen', home_item, :class => 'cancel'
+    
+  
+  

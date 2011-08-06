@@ -1,0 +1,21 @@
+= form_for live_item, :as => :live_item, :html => { :class => 'live_item' } do |f|
+
+  %ol.form-fields{ :style => 'color: white' }
+    %li
+      = f.label :title, 'Title:'
+      = f.text_field :title, :class => 'important'
+    %li
+      = f.label :location, 'Location:'
+      = f.text_field :location
+    %li
+      = f.label :date, 'Begin:'
+      = f.datetime_select :date
+    %li
+      = f.label :ticket, 'Ticket:'
+      = f.text_field :ticket
+    %li
+      = f.label :link, 'Link:'
+      = f.text_field :link
+    %li.submit
+      = f.submit 'Speichern', :disable_with => 'Bitte warten…'
+      = link_to 'Abbrechen', root_path, :class => 'cancel'

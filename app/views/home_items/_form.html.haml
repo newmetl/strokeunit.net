@@ -1,0 +1,23 @@
+= form_for home_item, :as => :home_item, :html => { :class => 'home_item', :multipart => true } do |f|
+
+  %ol.form-fields{ :style => 'color: white' }
+    %li
+      = f.label :title, 'Title:'
+      = f.text_field :title, :class => 'important'
+    %li
+      = f.label :text, 'Text:'
+      = f.text_area :text, :class => 'markdown'
+    %li
+      Und wenn du ne richtig coole Sau sein willst, dann formatiere
+      deinen Text mit
+      = link_to 'Markdown.', 'http://daringfireball.net/projects/markdown/syntax', :target => '_blank'
+    %li
+      = f.label :pic, 'Bild hinzufügen:'
+      = f.file_field :pic
+    %li
+      = f.label :pic_align, 'Bildausrichtung:'
+      = select( :home_item, :pic_align, ['left', 'center', 'right'] )
+      
+    %li.submit
+      = f.submit 'Speichern', :disable_with => 'Bitte warten…'
+      = link_to 'Abbrechen', root_path, :class => 'cancel'

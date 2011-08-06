@@ -1,0 +1,42 @@
+- if current_user and current_user.admin
+  .controls{ :class => 'item m_live' }
+    = link_to '✚ Neuen Gig-Termin erstellen', new_live_item_path
+
+.m_live{ :class => "item" }
+  .header{ :class => "clearfix" }
+    %h3 Anstehende Gigs:
+    
+  %ul.coming_gigs
+    - coming_up_live_items.each do |live_item|
+      %li.gig_item
+        .date
+          = "#{live_item.date.strftime('%d.%m.%Y - %H:%M')} h:"
+        %a(target='_blank'){ :href => live_item.link }
+          .title
+            = live_item.title
+            %br
+            = live_item.location
+        .ticket
+          = live_item.ticket
+      - if current_user and current_user.admin
+        %li.controls
+          = link_to '✎ Bearbeiten', edit_live_item_path(live_item.id)
+          = link_to '✖ Löschen', live_item_path(live_item.id), :method => :delete, :confirm => "Wolle Eintrag lösche?"
+
+.m_live{ :class => "item" }
+  .header{ :class => "clearfix" }
+    %h3 Versäumte Gigs:
+
+  %ul.past_gigs
+    - past_live_items.each do |live_item|
+      %li.gig_item
+        .date
+          = "#{live_item.date.strftime('%d.%m.%Y')}:"
+        .title
+          = live_item.title
+          %br
+          = live_item.location
+      - if current_user and current_user.admin
+        %li.controls
+          = link_to '✎ Bearbeiten', edit_live_item_path(live_item.id)
+          = link_to '✖ Löschen', live_item_path(live_item.id), :method => :delete, :confirm => "Wolle Eintrag lösche?"

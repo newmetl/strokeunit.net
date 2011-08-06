@@ -1,0 +1,39 @@
+// Compass Mixins
+
+@import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
+@import "compass/css3/gradient"
+
+// Variables
+
+$border-color: #aaa
+$accent-background-color: #f2f4f6
+$light-background-color: #f7f7f7
+$shadow-color: #bbb
+
+=hasLayout
+  zoom: 1
+
+=box-sizing-border
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  -ms-box-sizing: border-box
+  box-sizing: border-box
+
+=clearfix
+  &:after
+    content: " "
+    display: block
+    height: 0
+    clear: both
+    overflow: hidden
+    visibility: hidden
+  +hasLayout
+
+
+@import "header"
+@import "all_in_one"
+@import "content"
+@import "left_col"
+@import "right_col"
+@import "forms"

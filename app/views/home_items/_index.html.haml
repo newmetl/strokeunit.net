@@ -1,0 +1,34 @@
+- if current_user and current_user.admin?
+  .controls{ :class => 'item m_home'}
+    = link_to '✚ Neuen Home-Eintrag erstellen', new_home_item_path
+
+- home_items.each do |home_item|
+  %a{ :name => "#{home_item.id}" }
+  .m_home{ :class => 'item clearfix' }
+    .header{ :class => 'clearfix' }
+      %h3
+        = "☆ #{home_item.title}"
+      %span{ :class => 'post_info' }
+        = "#{home_item.created_at.strftime('%d.%m.%Y')} von Wojtek"
+    
+    .body
+      - unless home_item.pic_url.nil?
+        %div{ :class => "pic_box_#{home_item.pic_align}" }
+          - if home_item.pic_align == 'center'
+            = image_tag home_item.pic_url(:center).to_s
+          - else
+            = image_tag home_item.pic_url(:normal).to_s, :width => 200
+      .text
+        = markdown(home_item.text)
+    
+    - if current_user and current_user.admin?
+      .controls
+        = link_to '✎ Bearbeiten', edit_home_item_path(home_item.id)
+        = link_to '✖ Löschen', home_item_path(home_item.id), :method => :delete, :confirm => "Wolle Eintrag lösche?"
+    
+    .comment_button
+      %a.comment_toggle{ :href => "#", :id => "#{home_item.id}" } Kommentare anzeigen
+      (
+      %a{ :href => "#disqus_thread", :'data-disqus-identifier' => "#{home_item.id}" }
+      )
+    .comments

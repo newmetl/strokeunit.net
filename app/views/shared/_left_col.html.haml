@@ -1,0 +1,21 @@
+.left_col
+  .item
+    %h3 Stroke Unit Radio
+    = render :partial => 'shared/radio'
+
+  - coming_up_gigs = LiveItem.coming_up_items[0..2]
+  - if coming_up_gigs.any?
+    .item( class='live_teaser' )
+      %h3 Anstehende Gigs:
+      %ul
+        - coming_up_gigs.each do |item|
+          %li
+            %a{ :href => item.link }
+              = "#{item.date.strftime('%d.%m.%Y')}: #{item.title}"
+
+  .item{ :class =>'solid_back' }
+    %h3 El Perdedor out now!
+    %img{ :src => "/images/el-perdedor-label-small.png" }
+    .bottom_link
+      %a{ :href => "mailto:order@strokeunit.net?subject=Bestellung&body=Ich%20will%20eine%20CD%20kaufen!%20Übrigens%20wollte%20ich%20noch%20sagen", :class => 'buy' }
+        Bestellen
