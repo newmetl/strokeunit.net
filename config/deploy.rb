@@ -1,6 +1,6 @@
 require 'bundler/capistrano'
 
-set :stages, %w(production staging)
+set :stages, %w(production)
 set :rake, 'bundle exec rake'
 set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
